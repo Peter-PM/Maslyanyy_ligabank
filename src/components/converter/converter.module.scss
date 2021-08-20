@@ -3,10 +3,23 @@
 }
 
 .form {
+  position: relative;
   padding: 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 36px;
+    background:
+       url('../../img/arrow-left.png') no-repeat,
+       url('../../img/arrow-right.png') no-repeat 3px 18px;
+    top: 60px;
+    left: 48%;
+  }
 }
 
 .title {
@@ -45,9 +58,6 @@
 
   &Date {
     margin-top: 85px;
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
   }
 }
 
@@ -62,8 +72,8 @@
   padding-left: 17px;
   font-size: 30px;
   text-align: center;
-  -moz-appearance:none; /* Firefox */
-  -webkit-appearance:none; /* Safari and Chrome */
+  -moz-appearance:none;
+  -webkit-appearance:none;
   appearance:none;
   background: url('../../img/Vector-03.png') no-repeat 85% 50%;
 }

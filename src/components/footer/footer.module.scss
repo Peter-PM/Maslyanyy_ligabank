@@ -1,0 +1,71 @@
+.footer {
+  display: flex;
+  align-items: flex-start;
+  height: 91px;
+  padding: 0 calc(50% - 585px);
+  padding-top: 49px;
+  padding-bottom: 84px;
+  background-color: #F6F7FF;
+
+  &Section {
+
+    &:first-child {
+      max-width: 252px;
+    }
+
+    &:nth-child(2) {
+      padding-left: 81px;
+      padding-top: 8px;
+    }
+
+    &:nth-child(3) {
+      padding-top: 12px;
+      padding-left: 109px;
+      max-width: 167px;
+      background: url('../../img/phone.png') no-repeat 81px 11px;
+    }
+
+    &:nth-child(4) {
+      padding-left: 113px;
+      padding-top: 11px;
+      max-width: 122px;
+      background: url('../../img/phone-2.png') no-repeat 81px 11px;
+    }
+  }
+}
+
+.address {
+  margin-top: 12px;
+}
+
+.item {
+  font-weight: 500;
+  padding-bottom: 13px;
+}
+
+.phone {
+  display: block;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 12px;
+  color: #707C87;
+  line-height: 17px;
+}
+
+.social {
+  padding-top: 11px;
+  padding-left: 80px;
+  &List {
+    display: flex;
+  }
+
+  &Item {
+    padding-right: 15px;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
