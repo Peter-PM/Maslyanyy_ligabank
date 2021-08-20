@@ -1,0 +1,57 @@
+.promo {
+  display: flex;
+  padding: 0 calc(50% - 585px);
+  background:
+    url('../../img/Rectangle-60.png') no-repeat,
+    url('../../img/Rectangle-61.png') no-repeat 149px 131px,
+    url('../../img/Rectangle-58.png') no-repeat calc(100% - 298px) 131px,
+    url('../../img/Rectangle-59.png') no-repeat 100%,
+    #2C36F2;
+  height: 400px;
+}
+
+.wrapper {
+
+  &Right {
+    display: flex;
+    flex-direction: column;
+    margin-left: 170px;
+    margin-right: 181px;
+  }
+
+  &Left {
+    width: 398px;
+    background:
+      url('../../img/black-card.png') no-repeat -22px 119px,
+      url('../../img/white-card.png') no-repeat 87px 61px;
+  }
+}
+
+.title {
+  margin: 0;
+  padding-top: 115px;
+  padding-bottom: 25px;
+  font-size: 54px;
+  font-weight: 700;
+  color: #F6F7FF;
+  line-height: 38px;
+}
+
+.description {
+  font-size: 22px;
+  color: #F6F7FF;
+  padding-bottom: 39px;
+  line-height: 16px;
+}
+
+.link {
+  color: #1F1E25;
+  font-size: 18px;
+  font-weight: 500;
+  width: 234px;
+  background-color: #F6F7FF;
+  border-radius: 4px;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 17px;
+}

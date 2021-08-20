@@ -1,5 +1,6 @@
-import Promo from "../promo/promo";
-import Converter from "../converter/converter";
+import React from 'react';
+import Promo from '../promo/promo';
+import Converter from '../converter/converter';
 
 function Main() {
   return (
@@ -9,6 +10,5 @@ function Main() {
     </main>
   );
 }
-  
+
 export default Main;
-  

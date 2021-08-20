@@ -1,0 +1,62 @@
+.history {
+  position: relative;
+  background-color: #F6F7FF;
+  margin-top: 100px;
+  padding-left: 70px;
+  padding-bottom: 39px;
+  padding-right: 83px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    left: 50%;
+    top: 100px;
+    background-color: #C1C2CA;
+    height: calc(100% - 188px);
+  }
+}
+
+.title {
+  margin: 0;
+  padding-top: 47px;
+  padding-bottom: 55px;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 23px;
+}
+
+.item {
+  width: 50%;
+  font-size: 18px;
+  padding-bottom: 26px;
+
+  &:nth-child(2n) {
+    text-align: end;
+  }
+}
+
+.date {
+  padding-right: 41px;
+}
+
+.result {
+  padding-left: 65px;
+  background: url('../../img/Group-58.png') no-repeat 12px 3px;
+}
+
+.button {
+  width: 198px;
+  height: 51px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2C36F2;
+  font-weight: 500;
+  color: #F6F7FF;
+}

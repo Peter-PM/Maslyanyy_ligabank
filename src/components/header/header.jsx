@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './header.module.scss';
 
 function Header() {
   return (
-    <header className="page-header">
-      <a href="/" className="page-header__logo-link page-header__link">
-        <svg className="page-header__logo-svg" width="28" height="25" viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <header className={styles.header}>
+      <a href="/" className={styles.logo}>
+        <svg className={styles.logoSvg} width="28" height="25" viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M16.75 1H13.8333L1 22.3415H4.79167L6.54167 19.2927L16.75 1Z" fill="#2C36F2"/>
           <path d="M2.75 26H27.25L16.75 7.09756L15 10.1463L20.25 19.2927L22 22.3415H4.79167H1L2.75 26Z" fill="#2C36F2"/>
           <path d="M22 22.3415L20.25 19.2927H9.75H6.54167L4.79167 22.3415H22Z" fill="#2C36F2"/>
@@ -14,16 +15,16 @@ function Header() {
         </svg>
         ЛИГА Банк
       </a>
-      <nav className="page-header__nav">
-        <ul className="page-header__nav-list">
-          <li className="page-header__nav-item"><a href="/" className="page-header__nav-link page-header__link">Услуги</a></li>
-          <li className="page-header__nav-item"><a href="/" className="page-header__nav-link page-header__link">Рассчитать кредит</a></li>
-          <li className="page-header__nav-item"><a href="/" className="page-header__nav-link page-header__nav-link--active page-header__link">Конвертер валют</a></li>
-          <li className="page-header__nav-item"><a href="/" className="page-header__nav-link page-header__link">Контакты</a></li>
-          <li className="page-header__nav-item"><a href="/" className="page-header__nav-link page-header__link">Задать вопрос</a></li>
+      <nav className={styles.nav}>
+        <ul className={styles.list}>
+          <li className={styles.item}><a href="/" className={styles.link}>Услуги</a></li>
+          <li className={styles.item}><a href="/" className={styles.link}>Рассчитать кредит</a></li>
+          <li className={styles.item}><a href="/" className={`${styles.link} ${styles.linkActive}`}>Конвертер валют</a></li>
+          <li className={styles.item}><a href="/" className={styles.link}>Контакты</a></li>
+          <li className={styles.item}><a href="/" className={styles.link}>Задать вопрос</a></li>
         </ul>
       </nav>
-      <a href="/" className="page-header__enter-link page-header__link">Войти в Интернет-банк</a>
+      <a href="/" className={styles.link}>Войти в Интернет-банк</a>
     </header>
   );
 }

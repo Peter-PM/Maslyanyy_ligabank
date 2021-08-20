@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 91px;
+  padding: 0 calc(50% - 585px);
+  color: #1F1E25;
+}
+
+.nav {
+  margin-right: 95px;
+}
+
+.list {
+  display: flex;
+}
+
+.item {
+  margin-right: 26px;
+}
+
+.link {
+  color: #1F1E25;
+  font-size: 16px;
+
+  &Active {
+    color: #2C36F2;
+  }
+}
+
+
+.logo {
+  position: relative;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: -7px;
+  letter-spacing: 1.1px;
+
+  &Svg {
+    padding-right: 9px;
+  }
+}

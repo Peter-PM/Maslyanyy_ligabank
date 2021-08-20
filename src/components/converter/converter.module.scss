@@ -1,0 +1,81 @@
+.converter {
+  padding: 0 calc(50% - 585px);
+}
+
+.form {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin-top: 60px;
+  margin-bottom: 65px;
+  font-size: 41px;
+  line-height: 29px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.caption {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.input {
+  display: block;
+  width: 388px;
+  height: 58px;
+  border: 1px solid #1F1E25;
+  border-radius: 4px;
+  margin: 0;
+  margin-top: 26px;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  margin-right: 15px;
+
+  &Date {
+    margin-top: 85px;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+  }
+}
+
+.select {
+  display: block;
+  width: 120px;
+  height: 60px;
+  border: 1px solid #1F1E25;
+  border-radius: 4px;
+  margin: 0;
+  padding: 0;
+  padding-left: 17px;
+  font-size: 30px;
+  text-align: center;
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  appearance:none;
+  background: url('../../img/Vector-03.png') no-repeat 85% 50%;
+}
+
+.button {
+  width: 382px;
+  height: 60px;
+  align-self: flex-end;
+  border-radius: 4px;
+  border: none;
+  background-color: #2C36F2;
+  color: #F6F7FF;
+  font-size: 18px;
+  font-weight: 500;
+}
