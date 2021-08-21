@@ -27,3 +27,17 @@
     color: #2C36F2;
   }
 }
+
+.enter {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 22px;
+    background: url('../../img/enter.png') no-repeat;
+    left: -30px;
+    top: -3px;
+  }
+}

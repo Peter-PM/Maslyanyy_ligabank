@@ -15,7 +15,7 @@ function Header() {
           <li className={styles.item}><a href="/" className={styles.link}>Задать вопрос</a></li>
         </ul>
       </nav>
-      <a href="/" className={styles.link}>Войти в Интернет-банк</a>
+      <a href="/" className={`${styles.link} ${styles.enter}`}>Войти в Интернет-банк</a>
     </header>
   );
 }

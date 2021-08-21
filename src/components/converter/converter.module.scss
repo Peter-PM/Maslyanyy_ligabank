@@ -58,6 +58,8 @@
 
   &Date {
     margin-top: 85px;
+    background: url('../../img/caledar.png') no-repeat 95% 5px;
+    cursor: pointer;
   }
 }
 
@@ -71,7 +73,6 @@
   padding: 0;
   padding-left: 17px;
   font-size: 30px;
-  text-align: center;
   -moz-appearance:none;
   -webkit-appearance:none;
   appearance:none;
@@ -88,4 +89,11 @@
   color: #F6F7FF;
   font-size: 18px;
   font-weight: 500;
+}
+
+.calendar {
+  position: absolute;
+  min-width: 390px;
+  top: 200px;
+  z-index: 10;
 }
