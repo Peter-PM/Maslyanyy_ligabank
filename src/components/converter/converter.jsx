@@ -15,13 +15,11 @@ const USD = 'USD';
 const LIMITATION = 7;
 
 function Converter() {
+
   const currentDate = new Date();
 
-  localStorage.setItem('conversionHistory', []);
-  localStorage.conversionHistory = 2;
   const [date, setDate] = useState(currentDate);
   const [isVisible, setIsVisible] = useState(false);
-  //const [isDisabled, setDisabled] = useState(false);
   const [currency, setСurrency] = useState('');
 
   const [myMoney, setMyMoney] = useState({
@@ -80,8 +78,16 @@ function Converter() {
 
   const handleHistorySave = (evt) => {
     evt.preventDefault();
-    localStorage.conversionHistory = 2;
-    store.dispatch(ActionCreator.changeHistory({myMoney,buyMoney,date}));
+
+    myMoney.value && store.dispatch(ActionCreator.changeHistory({myMoney,buyMoney,date}));
+    setMyMoney(()=> ({
+      ...myMoney,
+      value: 0,
+    }));
+    setBuyMoney(()=> ({
+      ...buyMoney,
+      value: 0,
+    }));
   };
 
   return (
@@ -93,9 +99,11 @@ function Converter() {
             У меня есть
             <input
               className={styles.input}
-              type="text"
+              type="number"
               name="my-money-input"
               id="my-money-input"
+              min="0"
+              max="1000000"
               placeholder="1000"
               value={myMoney.value}
               onChange={(evt) => {
@@ -131,9 +139,11 @@ function Converter() {
             Хочу приобрести
             <input
               className={styles.input}
-              type="text"
+              type="number"
               name="buy-money-input"
               id="buy-money-input"
+              min="0"
+              max="1000000"
               placeholder="13,1234"
               value={buyMoney.value}
               onChange={(evt) => {
@@ -163,6 +173,7 @@ function Converter() {
         <input
           className={`${styles.input} ${styles.inputDate}`}
           type="text"
+          aria-label="Выбор даты курса конвертации"
           value={dayjs(date).format('DD.MM.YYYY')}
           onClick={setIsVisible}
           readOnly
