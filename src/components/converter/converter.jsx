@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import store from '../../store/store';
+import { ActionCreator } from '../../store/action';
 import dayjs from 'dayjs';
 import History from '../history/history';
 import styles from './converter.module.scss';
@@ -15,12 +17,13 @@ const LIMITATION = 7;
 function Converter() {
   const currentDate = new Date();
 
+  localStorage.setItem('conversionHistory', []);
+  localStorage.conversionHistory = 2;
   const [date, setDate] = useState(currentDate);
   const [isVisible, setIsVisible] = useState(false);
   //const [isDisabled, setDisabled] = useState(false);
   const [currency, setСurrency] = useState('');
 
-  // const [convertHistory, setHistory] = useState(new Array(10));
   const [myMoney, setMyMoney] = useState({
     oneCurrency: RUB,
     value: '',
@@ -47,12 +50,12 @@ function Converter() {
     }));
   }, [currency]);
 
-  const changeDate = (evt) => {
+  const handleDateChange = (evt) => {
     setIsVisible(false);
     setDate(evt);
   };
 
-  const changeOneInput = (value) => {
+  const handleOneInputchange = (value) => {
     setMyMoney(()=> ({
       ...myMoney,
       value: +value,
@@ -63,7 +66,7 @@ function Converter() {
     }));
   };
 
-  const changeTwoInput = (value) => {
+  const handleTwoInputchange = (value) => {
     setBuyMoney(()=> ({
       ...buyMoney,
       value: +value,
@@ -73,6 +76,12 @@ function Converter() {
       ...myMoney,
       value: +(value*currency[myMoney.oneCurrency]/currency[buyMoney.twoCurrency]).toFixed(4),
     }));
+  };
+
+  const handleHistorySave = (evt) => {
+    evt.preventDefault();
+    localStorage.conversionHistory = 2;
+    store.dispatch(ActionCreator.changeHistory({myMoney,buyMoney,date}));
   };
 
   return (
@@ -90,7 +99,7 @@ function Converter() {
               placeholder="1000"
               value={myMoney.value}
               onChange={(evt) => {
-                changeOneInput(evt.target.value);
+                handleOneInputchange(evt.target.value);
               }}
             />
           </label>
@@ -128,7 +137,7 @@ function Converter() {
               placeholder="13,1234"
               value={buyMoney.value}
               onChange={(evt) => {
-                changeTwoInput(evt.target.value);
+                handleTwoInputchange(evt.target.value);
               }}
             />
           </label>
@@ -161,7 +170,7 @@ function Converter() {
         {isVisible && (
           <Calendar
             className={styles.calendar}
-            onChange={changeDate}
+            onChange={handleDateChange}
             value={date}
             minDate={dayjs(currentDate).subtract(LIMITATION, 'day').toDate()}
             maxDate={currentDate}
@@ -170,6 +179,7 @@ function Converter() {
         <button
           className={styles.button}
           type="button"
+          onClick={handleHistorySave}
         >
           Сохранить результат
         </button>
