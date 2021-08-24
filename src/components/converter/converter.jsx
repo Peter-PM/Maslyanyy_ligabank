@@ -13,10 +13,12 @@ const APP_ID = '.json?app_id=b9501ac25219483780bf55b8ee16128a';
 const RUB = 'RUB';
 const USD = 'USD';
 const LIMITATION = 7;
+const DECIMAL_PLACES = 4;
+const TIME_ZONE_OFFSET = 10800000;
 
 function Converter() {
 
-  const currentDate = new Date();
+  const currentDate = new Date(Date.now()-TIME_ZONE_OFFSET);
 
   const [date, setDate] = useState(currentDate);
   const [isVisible, setIsVisible] = useState(false);
@@ -44,7 +46,7 @@ function Converter() {
   useEffect(() => {
     setBuyMoney(()=> ({
       ...buyMoney,
-      value: +(myMoney.value/currency[myMoney.oneCurrency]*currency[buyMoney.twoCurrency]).toFixed(4) ? +(myMoney.value/currency[myMoney.oneCurrency]*currency[buyMoney.twoCurrency]).toFixed(4) : '',
+      value: +(myMoney.value/currency[myMoney.oneCurrency]*currency[buyMoney.twoCurrency]).toFixed(DECIMAL_PLACES) ? +(myMoney.value/currency[myMoney.oneCurrency]*currency[buyMoney.twoCurrency]).toFixed(DECIMAL_PLACES) : '',
     }));
   }, [currency]);
 
@@ -53,18 +55,18 @@ function Converter() {
     setDate(evt);
   };
 
-  const handleOneInputchange = (value) => {
+  const handleOneInputChange = (value) => {
     setMyMoney(()=> ({
       ...myMoney,
       value: +value,
     }));
     setBuyMoney(()=> ({
       ...buyMoney,
-      value: +(value/currency[myMoney.oneCurrency]*currency[buyMoney.twoCurrency]).toFixed(4),
+      value: +(value/currency[myMoney.oneCurrency]*currency[buyMoney.twoCurrency]).toFixed(DECIMAL_PLACES),
     }));
   };
 
-  const handleTwoInputchange = (value) => {
+  const handleTwoInputChange = (value) => {
     setBuyMoney(()=> ({
       ...buyMoney,
       value: +value,
@@ -72,11 +74,11 @@ function Converter() {
 
     setMyMoney(()=> ({
       ...myMoney,
-      value: +(value*currency[myMoney.oneCurrency]/currency[buyMoney.twoCurrency]).toFixed(4),
+      value: +(value*currency[myMoney.oneCurrency]/currency[buyMoney.twoCurrency]).toFixed(DECIMAL_PLACES),
     }));
   };
 
-  const handleHistorySave = (evt) => {
+  const handleButtonClick = (evt) => {
     evt.preventDefault();
 
     myMoney.value && store.dispatch(ActionCreator.changeHistory({myMoney,buyMoney,date}));
@@ -107,7 +109,7 @@ function Converter() {
               placeholder="1000"
               value={myMoney.value}
               onChange={(evt) => {
-                handleOneInputchange(evt.target.value);
+                handleOneInputChange(evt.target.value);
               }}
             />
           </label>
@@ -115,6 +117,7 @@ function Converter() {
             className={styles.select}
             name="my-money"
             id="my-money"
+            aria-label="Выбор своей валюты"
             defaultValue={`${RUB}`}
             onChange={(evt) => {
               setMyMoney(()=> ({
@@ -123,7 +126,7 @@ function Converter() {
               }));
               setBuyMoney(()=> ({
                 ...buyMoney,
-                value: +(myMoney.value/currency[evt.target.value]*currency[buyMoney.twoCurrency]).toFixed(4),
+                value: +(myMoney.value/currency[evt.target.value]*currency[buyMoney.twoCurrency]).toFixed(DECIMAL_PLACES),
               }));
             }}
           >
@@ -147,7 +150,7 @@ function Converter() {
               placeholder="13,1234"
               value={buyMoney.value}
               onChange={(evt) => {
-                handleTwoInputchange(evt.target.value);
+                handleTwoInputChange(evt.target.value);
               }}
             />
           </label>
@@ -155,11 +158,12 @@ function Converter() {
             className={styles.select}
             name="buy-money"
             id="buy-money"
+            aria-label="Выбор валюты для покупки"
             defaultValue={`${USD}`}
             onChange={(evt) => {
               setBuyMoney(()=> ({
                 twoCurrency: evt.target.value,
-                value: +(myMoney.value/currency[myMoney.oneCurrency]*currency[evt.target.value]).toFixed(4),
+                value: +(myMoney.value/currency[myMoney.oneCurrency]*currency[evt.target.value]).toFixed(DECIMAL_PLACES),
               }));
             }}
           >
@@ -190,7 +194,7 @@ function Converter() {
         <button
           className={styles.button}
           type="button"
-          onClick={handleHistorySave}
+          onClick={handleButtonClick}
         >
           Сохранить результат
         </button>

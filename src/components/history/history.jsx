@@ -10,7 +10,7 @@ function History(props) {
 
   const {convertHistory, deleteHistory} = props;
 
-  const hendleDeleteButton = () => {
+  const hendleButtonClick = () => {
     deleteHistory();
   };
 
@@ -30,7 +30,7 @@ function History(props) {
       <button
         className={styles.button}
         type="button"
-        onClick={hendleDeleteButton}
+        onClick={hendleButtonClick}
       >
         Очистить историю
       </button>
@@ -39,7 +39,17 @@ function History(props) {
 }
 
 History.propTypes = {
-  convertHistory: PropTypes.array.isRequired,
+  convertHistory: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.instanceOf(Date),
+    myMoney: PropTypes.shape({
+      oneCurrency: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+    }),
+    buyMoney: PropTypes.shape({
+      twoCurrency: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+    }),
+  })).isRequired,
   deleteHistory: PropTypes.func.isRequired,
 };
 
